@@ -22,7 +22,7 @@ namespace OpenTodo.Repositories
                 DOB = c.DOB,
                 Username = c.Username,
                 CreatedAt = c.CreatedAt
-            }).ToListAsync();
+            }).Take(30).OrderByDescending(c => c.Id).ToListAsync();
         }
 
         public async Task<UserSchema> GetUser(int id)
@@ -55,7 +55,7 @@ namespace OpenTodo.Repositories
                 FirstName = c.FirstName,
                 LastName = c.LastName,
                 Username = c.Username
-            }).Take(10).ToListAsync();
+            }).Take(10).OrderByDescending(c => c.Id).ToListAsync();
             return users;
 
         }

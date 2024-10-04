@@ -14,7 +14,7 @@ namespace OpenTodo.Repositories {
           public async Task<List<CategoryDTO>> GetAllCategories()
         {
 
-            var categories = await _db.Categories.Take(30).ToListAsync();
+            var categories = await _db.Categories.Take(30).OrderByDescending(c => c.ID).ToListAsync();
             var categoriesDTO = dto.ConvertSchemaToDTO(categories);
             return categoriesDTO;
 
@@ -22,7 +22,7 @@ namespace OpenTodo.Repositories {
         
         public async Task<List<CategoryDTO>> GetAllCategoriesByBoard(int id)
         {
-            var categories = await _db.Categories.Where(c => c.Board.ID == id).Take(30).ToListAsync();
+            var categories = await _db.Categories.Where(c => c.Board.ID == id).Take(30).OrderByDescending(c => c.ID).ToListAsync();
              var categoriesDTO = dto.ConvertSchemaToDTO(categories);
             return categoriesDTO;
 

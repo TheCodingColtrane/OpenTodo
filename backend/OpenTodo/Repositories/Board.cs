@@ -21,7 +21,7 @@ namespace OpenTodo.Repositories {
         
         public async Task<List<BoardDTO>> GetAllTasksByBoardId(int id)
         {
-            var boards = await _db.Boards.Where(c => c.ID == id).Take(30).ToListAsync();
+            var boards = await _db.Boards.Where(c => c.ID == id).Take(30).OrderByDescending(c => c.ID).ToListAsync();
              var boardsDTO = dto.ConvertSchemaToDTO(boards);
             return boardsDTO;
 
@@ -29,7 +29,8 @@ namespace OpenTodo.Repositories {
 
            public async Task<List<TaskDTO>> GetTasksByTerm(string term, int boardId)
         {
-            var tasks = await _db.Tasks.Where(c =>  EF.Functions.ILike(c.Title, $"%{term}%") || EF.Functions.ILike(c.Description, $"%{term}%") && c.Board.ID == boardId).Take(30).ToListAsync();
+            var tasks = await _db.Tasks.Where(c =>  EF.Functions.ILike(c.Title, $"%{term}%") || EF.Functions.ILike(c.Description, $"%{term}%") && c.Board.ID == boardId).
+            Take(30).OrderByDescending(c => c.ID).ToListAsync();
             var taskDto = new TaskDTO();
              List<TaskDTO>? taskDTO = taskDto.ConvertSchemaToDTO(tasks);
             return taskDTO;
@@ -39,7 +40,7 @@ namespace OpenTodo.Repositories {
         public async Task<List<BoardDTO>> GetBoardsByUserId(int id)
         {
             var boards = await _db.BoardParticipants.Where(c => c.UserId == id).Join(_db.Boards, b => b.Boards.ID, bp => bp.ID,
-            (board, participant) => new {boardID = participant.ID, name = participant.Name}).Take(30).ToListAsync();
+            (board, participant) => new {boardID = participant.ID, name = participant.Name}).Take(30).OrderByDescending(c => c.boardID).ToListAsync();
             // var sql =  _db.BoardParticipants.Where(c => c.UserId == id).Join(_db.Boards, b => b.Boards.ID, bp => bp.ID,
             // (board, participant) => new {boardID = participant.ID, name = participant.Name}).Take(30).ToQueryString();
             List<BoardDTO> boardDTOs = [];
