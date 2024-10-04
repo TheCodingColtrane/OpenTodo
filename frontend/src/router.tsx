@@ -7,7 +7,7 @@ import Choose from './components/pages/board/choose';
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Board />} />
+      <Route path="/" element={<SignUp />} />
       <Route path="/board/:id?" element={<Board />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/signin" element={<SignIn />} />
