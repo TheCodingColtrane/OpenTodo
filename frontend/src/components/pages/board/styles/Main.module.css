@@ -1,0 +1,141 @@
+.sidebar {
+    width: 50%;
+    background-color: #f4f4f4;
+    padding: 20px;
+    height: 100vh;
+    color: black;
+    
+  }
+  
+  .sidebar-menu {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar-menu li {
+    padding: 10px 0;
+    cursor: pointer;
+    font-weight: bold;
+    border-bottom: solid black 1px; 
+  }
+  .sidebar-menu li:hover {
+    background-color:  #eef1f8;
+  }
+  /* App.module.css */
+  .boards-container {
+    display: flex;
+    height: 100vh;  
+  }
+  
+  .task-list {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #eef1f8;
+  color: black;
+  overflow-y: scroll;
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
+  }
+  
+  .task-item {
+    /* display: flex;
+    align-items: center; */
+    padding: 10px 0;
+    cursor: pointer;
+  }
+
+  .task-item:hover {
+    /* display: flex;
+    align-items: center; */
+    background-color: #21212149;
+  }
+
+  .task-item-completed:hover {
+    /* display: flex;
+    align-items: center; */
+    background-color: #21212149;
+    }
+  
+  .task-item-completed {
+    /* display: flex;
+    align-items: center; */
+    padding: 10px 0;
+    cursor: pointer;
+    text-decoration: line-through;
+    opacity: 0.6;
+  }
+  
+  .due-date {
+    margin-left: auto;
+    font-size: 0.9em;
+    color: gray;
+  }
+  
+  .task-list li{
+    list-style-type: none;
+    }
+    
+    #search-task-input {
+      padding: 7px;
+      border-radius: 10px;
+      border: 1px solid #0f0f0f;
+      background-color:  #eef1f8;
+      color: black;
+      height: 30%;
+      width: 30%;
+    }
+
+    .task-group {
+      margin-bottom: 20px;
+  }
+
+  body {
+    margin: 0;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+  }
+
+  .input-group {
+    margin-bottom: 20px;
+  }
+  .input-group input, select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.autocomplete {
+  /*the container must be positioned relative:*/
+  position: relative;
+  display: inline-block;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+.autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: #e9e9e9;
+}
+.autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: DodgerBlue !important;
+  color: #ffffff;
+}
